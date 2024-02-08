@@ -6,6 +6,7 @@ import "react-slideshow-image/dist/styles.css";
 import "./SlideShow.css"
 import VehicleCards from '../products/VehicleCards';
 import AllProducts from '../products/AllProducts'
+import AboutUs from '../aboutus/AboutUs';
 function page() {
   const images: string[] = [
     "https://cdn.dribbble.com/users/7656374/screenshots/17017943/media/7f6db54e4da05cffbea2c730778713b3.jpg?resize=1200x900&vertical=center",
@@ -77,6 +78,7 @@ function page() {
       <VehicleCards vehicles={vehicles}/>
       </div>
       <AllProducts/>
+      <AboutUs/>
     </div>
   )
 }
