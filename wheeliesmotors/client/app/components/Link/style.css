@@ -113,7 +113,7 @@
     position: relative;
     align-items: center;
     justify-content: center;
-    background: rgb(97 97 97);
+    background: rgba(0, 0, 0, 0);
     ;
     width: var(--burger-diameter);
     height: var(--burger-diameter);
@@ -257,4 +257,7 @@
     transform: scale(var(--nav-active-scale));
     visibility: visible;
     opacity: 1;
+  }
+  .bg-transparent {
+    background-color: transparent;
   }

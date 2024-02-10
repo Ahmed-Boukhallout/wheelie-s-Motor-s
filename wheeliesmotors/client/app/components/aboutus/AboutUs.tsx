@@ -8,7 +8,10 @@ const AboutUs = () => {
     const aboutObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          setIsVisible(entry.isIntersecting);
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            aboutObserver.unobserve(entry.target); // Stop observing once triggered
+          }
         });
       },
       { threshold: 0.5 } // Only consider visible when 50% of the element is in the viewport
@@ -29,8 +32,8 @@ const AboutUs = () => {
     <div className="p-4 bg-white rounded-lg shadow-md">
       <div ref={aboutRef} className="flex flex-wrap">
         <div
-          className={`w-full md:w-1/2 pr-4 mb-4 md:mb-0 transition-transform duration-1000 ${
-            isVisible ? 'transform translate-x-0' : 'transform -translate-x-full'
+          className={`w-full md:w-1/2 mb-4 md:mb-0 transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
           <img
@@ -40,8 +43,8 @@ const AboutUs = () => {
           />
         </div>
         <div
-          className={`w-full md:w-1/2 transition-transform duration-1000 ${
-            isVisible ? 'transform translate-x-0' : 'transform translate-x-full'
+          className={`w-full md:w-1/2 transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
           <h2 className="text-2xl font-bold mb-[-3.5rem] text-black text-center mt-24">About Us</h2>

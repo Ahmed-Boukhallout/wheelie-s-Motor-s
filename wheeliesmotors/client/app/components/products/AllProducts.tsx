@@ -41,7 +41,7 @@ const ProductCard = ({ product, index }: { product: { id: number; name: string; 
           onLoad={() => setLoaded(true)}
         />
         {!loaded && <div style={{ aspectRatio: '16 / 9' }} className="h-36 w-full bg-gray-200"></div>} {/* Placeholder for image while loading */}
-        <h2 className="text-lg font-bold mb-2">{product.name}</h2>
+        <h2 className="text-lg font-bold mb-2 text-black text-center">{product.name}</h2>
         <p className="text-md font-semibold mb-4">{product.price}</p>
       </motion.div>
     );
@@ -69,7 +69,7 @@ const ProductCard = ({ product, index }: { product: { id: number; name: string; 
           <FiChevronLeft size={24} />
         </button>
         
-        <div className="flex p-4 relative" ref={containerRef} style={{ scrollSnapType: 'x mandatory', display: 'flex', overflowX: 'hidden', width: '100%', height: '22rem' }}>  
+        <div className="flex p-4 relative bg-white" ref={containerRef} style={{ scrollSnapType: 'x mandatory', display: 'flex', overflowX: 'hidden', width: '100%', height: '22rem' }}>  
           {productList.map((product, index) => (
             <ProductCard key={product.id} product={product} index={index} />
           ))}

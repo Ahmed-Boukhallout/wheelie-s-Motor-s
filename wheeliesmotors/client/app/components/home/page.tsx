@@ -7,6 +7,8 @@ import "./SlideShow.css"
 import VehicleCards from '../products/VehicleCards';
 import AllProducts from '../products/AllProducts'
 import AboutUs from '../aboutus/AboutUs';
+import Footer from '../footer/Footer';
+import FloatingIcon from '../Chat/page';
 function page() {
   const images: string[] = [
     "https://cdn.dribbble.com/users/7656374/screenshots/17017943/media/7f6db54e4da05cffbea2c730778713b3.jpg?resize=1200x900&vertical=center",
@@ -56,7 +58,7 @@ function page() {
   return (
     <div>
           <Navbar />
-       <div className="slide-container">
+       <div className="slide-container bg-white">
         <Slide {...properties}>
           {images.map((image, index) => (
             <div key={index} className="each-slide-effect">
@@ -77,8 +79,13 @@ function page() {
       </h1>
       <VehicleCards vehicles={vehicles}/>
       </div>
+      <div className="h-screen flex justify-center items-center bg-gray-200">
+      <h1 className="text-4xl font-bold text-center">Welcome to My Website</h1>
+      <FloatingIcon />
+    </div>
       <AllProducts/>
       <AboutUs/>
+      <Footer/>
     </div>
   )
 }
