@@ -9,7 +9,9 @@ import AllProducts from '../products/AllProducts'
 import AboutUs from '../aboutus/AboutUs';
 import Footer from '../footer/Footer';
 import FloatingIcon from '../Chat/page';
-function page() {
+import MapContainer from '../footer/Map';
+import Stats from '../Stats/Stats'
+function Home() {
   const images: string[] = [
     "https://cdn.dribbble.com/users/7656374/screenshots/17017943/media/7f6db54e4da05cffbea2c730778713b3.jpg?resize=1200x900&vertical=center",
      "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/sports-bike-template-design-83af5248bc8b6a3cb2c9982e03b93641_screen.jpg?ts=1695065539"
@@ -17,13 +19,13 @@ function page() {
   ];
   
   const properties = {
-    duration: 5000,
+    duration: 2000,
     transitionDuration: 1000,
     autoplay: true,
     indicators: true,
     arrows: false,
     easing: "ease-out",
-    pauseOnHover: true,
+    pauseOnHover: false,
   };
   const vehicles = [
     {
@@ -56,7 +58,7 @@ function page() {
     },
   ];
   return (
-    <div>
+    <div className='bg-white'>
           <Navbar />
        <div className="slide-container bg-white">
         <Slide {...properties}>
@@ -79,15 +81,20 @@ function page() {
       </h1>
       <VehicleCards vehicles={vehicles}/>
       </div>
-      <div className="h-screen flex justify-center items-center bg-gray-200">
-      <h1 className="text-4xl font-bold text-center">Welcome to My Website</h1>
-      <FloatingIcon />
-    </div>
+     
+   
       <AllProducts/>
+      <Stats/>
       <AboutUs/>
+      <div className="w-full" >
+            <div style={{ height: '227px', width: '100%' }}>
+              <MapContainer  />
+            </div>
+          </div>  
       <Footer/>
+      <FloatingIcon />
     </div>
   )
 }
 
-export default page
+export default Home

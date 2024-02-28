@@ -1,5 +1,4 @@
 import React from 'react';
-import MapContainer from './Map'; // Import the MapContainer component
 
 const Footer = () => {
   return (
@@ -19,12 +18,7 @@ const Footer = () => {
             <p className="mb-2">Saturday: 10am - 4pm</p>
             <p>Sunday: Closed</p>
           </div>
-          <div className="w-full lg:w-1/3">
-            <h3 className="text-xl font-bold mb-4">Location</h3>
-            <div style={{ height: '227px', width: '420px' }}>
-              <MapContainer  />
-            </div>
-          </div>    
+           
         </div>
         <hr className="border-gray-600 my-8" />
         <div className="text-center">

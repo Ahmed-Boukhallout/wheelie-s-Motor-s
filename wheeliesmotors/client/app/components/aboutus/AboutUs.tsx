@@ -29,7 +29,7 @@ const AboutUs = () => {
   }, []);
 
   return (
-    <div className="p-4 bg-white rounded-lg shadow-md">
+    <div id="about" className="p-4 bg-white rounded-lg shadow-md">
       <div ref={aboutRef} className="flex flex-wrap">
         <div
           className={`w-full md:w-1/2 mb-4 md:mb-0 transition-all duration-1000 ${

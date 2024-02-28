@@ -1,117 +1,64 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
-const ChatRoom = () => {
-  const [isChatOpen, setIsChatOpen] = useState(false);
+type Message = {
+  id: number;
+  text: string;
+  sender: string;
+};
 
-  useEffect(() => {
-    const element = document.querySelector('.floating-chat') as HTMLElement;
-    const myStorage = localStorage;
+const Chatroom = () => {
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [inputText, setInputText] = useState('');
 
-    if (!myStorage.getItem('chatID')) {
-      myStorage.setItem('chatID', createUUID());
+  const handleSendMessage = () => {
+    if (inputText.trim() !== '') {
+      const newMessage: Message = {
+        id: messages.length + 1,
+        text: inputText.trim(),
+        sender: 'User',
+      };
+      setMessages([...messages, newMessage]);
+      setInputText('');
     }
+  };
 
-    setTimeout(() => {
-      element.classList.add('enter');
-    }, 1000);
-
-    const openElement = () => {
-      setIsChatOpen(true);
-      const messagesContainer = element.querySelector('.messages') as HTMLElement | null;
-      const textInput = element.querySelector('.text-box') as HTMLDivElement | null;
-      if (!messagesContainer || !textInput) return;
-
-      element.querySelector('>i')?.classList.add('hidden');
-      element.classList.add('expand');
-      element.querySelector('.chat')?.classList.add('enter');
-      textInput.contentEditable = 'true';
-      textInput.focus();
-
-      element.removeEventListener('click', openElement);
-      element.querySelector('.header button')?.addEventListener('click', closeElement);
-      element.querySelector('#sendMessage')?.addEventListener('click', sendNewMessage);
-      messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    };
-
-    const closeElement = () => {
-      const messagesContainer = element.querySelector('.messages') as HTMLElement | null;
-      const textInput = element.querySelector('.text-box') as HTMLDivElement | null;
-      if (!messagesContainer || !textInput) return;
-
-      element.querySelector('.chat')?.classList.remove('enter');
-      element.querySelector('>i')?.classList.remove('hidden');
-      element.classList.remove('expand');
-      element.querySelector('.header button')?.removeEventListener('click', closeElement);
-      element.querySelector('#sendMessage')?.removeEventListener('click', sendNewMessage);
-      textInput.contentEditable = 'false';
-      textInput.blur();
-
-      setTimeout(() => {
-        element.querySelector('.chat')?.classList.remove('enter');
-        element.addEventListener('click', openElement);
-      }, 500);
-    };
-
-    const createUUID = () => {
-      const s = [];
-      const hexDigits = '0123456789abcdef';
-      for (let i = 0; i < 36; i++) {
-        s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
-      }
-      s[14] = '4'; // bits 12-15 of the time_hi_and_version field to 0010
-      s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1); // bits 6-7 of the clock_seq_hi_and_reserved to 01
-      s[8] = s[13] = s[18] = s[23] = '-';
-      const uuid = s.join('');
-      return uuid;
-    };
-
-    const sendNewMessage = () => {
-      const userInput = element.querySelector('.text-box') as HTMLDivElement | null;
-      const messagesContainer = element.querySelector('.messages') as HTMLElement | null;
-      if (!userInput || !messagesContainer) return;
-
-      const newMessage = userInput.innerHTML.replace(/\<div\>|\<br.*?\>/ig, '\n').replace(/\<\/div\>/g, '').trim().replace(/\n/g, '<br>');
-
-      if (!newMessage) return;
-
-      messagesContainer.innerHTML += `<li class="self">${newMessage}</li>`;
-      userInput.innerHTML = '';
-      userInput.focus();
-
-      messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    };
-
-    const onMetaAndEnter = (event: KeyboardEvent) => {
-      if ((event.metaKey || event.ctrlKey) && event.keyCode == 13) {
-        sendNewMessage();
-      }
-    };
-
-    element.addEventListener('click', openElement);
-
-    return () => {
-      element.removeEventListener('click', openElement);
-    };
-  }, []);
+  const suggestedMessages = [
+    "Hello! How can I help you today?",
+    "What's your favorite book?",
+    "Have you seen any good movies lately?",
+  ];
 
   return (
-    <div className={`floating-chat ${isChatOpen ? 'expand' : ''}`}>
-      <i className="fa fa-comments" aria-hidden="true"></i>
-      <div className={`chat ${isChatOpen ? 'enter' : ''}`}>
-        <div className="header">
-          <span className="title">What's on your mind?</span>
-          <button><i className="fa fa-times" aria-hidden="true"></i></button>
-        </div>
-        <ul className="messages">
-          {/* Messages go here */}
-        </ul>
-        <div className="footer">
-          <div className="text-box" contentEditable={true} suppressContentEditableWarning={true} disabled={true}></div>
-          <button id="sendMessage">send</button>
+    <div className="flex flex-col h-screen bg-gray-100">
+     
+      <div className="fixed bottom-0 right-24 h-96 flex justify-center items-center">
+        <div className="chat-card w-300 bg-white rounded-lg shadow-md overflow-hidden">
+          <div className="chat-header p-2 bg-gray-200 flex items-center">
+            <div className="h2 text-lg font-semibold text-gray-700">Customer Service</div>
+          </div>
+          <div className="chat-body p-4">
+            <div className="message incoming bg-gray-400 rounded-lg p-2 mb-2">
+              <p>Hello, I need Some Help !!</p>
+            </div>
+            <div className="message outgoing bg-gray-400 text-right rounded-lg p-2 mb-2">
+              <p>I have a question about your services.</p>
+            </div>
+            {/* Add more messages as needed */}
+          </div>
+          <div className="chat-footer p-2 bg-gray-200 flex items-center">
+            <input
+              className="flex-1 p-2 rounded-md border border-gray-300 focus:outline-none text-black"
+              type="text"
+              placeholder="Type your message"
+            />
+            <button className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 focus:outline-none">
+              Send
+            </button>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default ChatRoom;
+export default Chatroom;

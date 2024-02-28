@@ -12,7 +12,7 @@ const FloatingIcon = () => {
   return (
     <>
       <div
-        className="fixed bottom-10 right-10 bg-blue-500 p-3 rounded-full cursor-pointer"
+        className="fixed bottom-10 right-10 bg-blue-500 p-3 rounded-full cursor-pointer z-10"
         onClick={toggleChatRoom}
       >
         <FaComment className="text-white text-2xl" />

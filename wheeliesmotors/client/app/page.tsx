@@ -2,7 +2,7 @@
 import Head from "next/head";
 // import TopHeader from './home/TopHeader';
 // import Footer from './home/Footer';
-import Homee from "./components/home/page";
+import Login from "./components/Login/Login";
 
 const Home: React.FC = () => {
   return (
@@ -14,7 +14,8 @@ const Home: React.FC = () => {
 
       <header>{/* <TopHeader /> */}</header>
       <main>
-        <Homee />
+       
+        <Login />
       </main>
       <footer>{/* <Footer/> */}</footer>
     </div>

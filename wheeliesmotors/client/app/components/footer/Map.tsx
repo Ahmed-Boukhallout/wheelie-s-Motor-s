@@ -42,7 +42,7 @@ const MapContainer: React.FC = () => {
     };
   }, []);
 
-  return <div ref={mapContainerRef} style={{ height: "258px" }} />;
+  return <div ref={mapContainerRef} style={{ height: "227px",zIndex:1 }} />;
 };
 
 export default MapContainer;
