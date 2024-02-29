@@ -19,11 +19,10 @@ const Chat = sequelize.define('chat', {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  admin_idadmin: {
+  company_idcompany: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-
 }, {
   tableName: 'chat',
   indexes: [
@@ -32,8 +31,8 @@ const Chat = sequelize.define('chat', {
       fields: ['client_id'],
     },
     {
-      name: 'fk_chat_admin1_idx',
-      fields: ['admin_idadmin'],
+      name: 'fk_chat_company1_idx',
+      fields: ['company_idcompany'],
     },
   ],
 });
@@ -46,7 +45,7 @@ Chat.belongsTo(User, {
 });
 
 Chat.belongsTo(User, {
-  foreignKey: 'admin_idadmin',
+  foreignKey: 'client_id',
   as: 'admin',
   onDelete: 'NO ACTION',
   onUpdate: 'NO ACTION',

@@ -1,10 +1,9 @@
-// pages/index.tsx
 import Head from "next/head";
-// import TopHeader from './home/TopHeader';
-// import Footer from './home/Footer';
 import Login from "./components/Login/Login";
 
 const Home: React.FC = () => {
+
+
   return (
     <div>
       <Head>
@@ -12,12 +11,10 @@ const Home: React.FC = () => {
         <meta name="description" content="Welcome to my Next.js app!" />
       </Head>
 
-      <header>{/* <TopHeader /> */}</header>
       <main>
-       
-        <Login />
+        <Login
+        />
       </main>
-      <footer>{/* <Footer/> */}</footer>
     </div>
   );
 };

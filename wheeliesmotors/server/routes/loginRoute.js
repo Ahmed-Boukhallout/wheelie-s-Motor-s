@@ -1,7 +1,7 @@
 // login
 const express = require('express');
 const loginRouter = express.Router();
-const loginController=require('../controllers/loginControllerCompany');
+const loginController=require('../Controllers/loginController.js');
 
 
 loginRouter.post('/login', loginController.Login)

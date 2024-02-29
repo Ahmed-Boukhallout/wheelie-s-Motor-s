@@ -1,6 +1,7 @@
-const sequelize= require ('../database-sequalize/index');
-const {DataTypes } = require('sequelize');
-const Product = require('../models/product')
+const {DataTypes}=require('sequelize')
+const sequelize=require('../database-squelize/index')
+const Product = require('../Models/product')
+const User = require('../Models/user')
 const Cart = sequelize.define('cart', {
     CartID: {
       type: DataTypes.INTEGER,
@@ -23,17 +24,41 @@ const Cart = sequelize.define('cart', {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    product_ProductID:{
-      type : DataTypes.INTEGER ,
-      allowNull: true
-    }
-  },{
-    tableName:'cart',
-});
+    userUserID:{
+      type:DataTypes.INTEGER,
+      allowNull:true
+    },
+  },{tableName:'carts',
+  
+  indexes:[
+    {
+        name: 'fk_cart_user1_idx',
+        fields: ['user_UserID'],
+      },
+
+]});
+Cart.belongsTo(User, {
+    foreignKey: 'user_UserID',
+    as: 'users',
+    onDelete: 'NO ACTION',
+    onUpdate: 'NO ACTION',
+  });
 Cart.belongsTo(Product, {
   foreignKey: 'product_ProductID', 
-  as: 'products',
+  as: 'cartProducts',
   onDelete: 'CASCADE',
   onUpdate: 'NO ACTION',
 });
+
+
   module.exports= Cart
+
+
+
+
+
+// Category.hasMany(Product);
+// Product.belongsTo(Category);
+
+// User.hasMany(Product);
+// Product.belongsTo(User);

@@ -1,4 +1,5 @@
-const Cart = require('../models/cart')
+///controller
+const Cart = require('../Models/cart')
 
 
 const getAllCrats = async(req,res) =>{
@@ -22,7 +23,7 @@ const updateCart = async(req,res) =>{
     res.json(carts)
 }
 const getUserCart=async(req,res)=>{
-    const ux=await Cart.findAll({where:{company_idcompany:req.params.id}})
+    const ux=await Cart.findAll({where:{userUserID:req.params.id}})
     res.json(ux)
 }
 

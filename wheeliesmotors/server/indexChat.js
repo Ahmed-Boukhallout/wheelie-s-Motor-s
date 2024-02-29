@@ -3,7 +3,7 @@ const { Server } = require("socket.io");
 const cors = require("cors");
 
 // Assuming you've imported the Sequelize Chat model correctly
-const Chat = require("./models/chat"); // Update the path as needed
+const Chat = require("./Models/chat"); // Update the path as needed
 
 const httpServer = http.createServer();
 

@@ -1,5 +1,5 @@
 const prodRouter=require('express').Router()
-const productController=require('../controllers/ControllerProducts')
+const productController=require('../Controllers/ControllerProducts')
 
 prodRouter.get('/allProducts',productController.getProducts)
 prodRouter.get('/getOneProd/:ProductID',productController.getOneProd)

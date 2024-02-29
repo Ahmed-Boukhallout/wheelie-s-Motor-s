@@ -1,35 +1,40 @@
-const express = require('express')
-console.log("test");
-const users = require('./models/users')
-const chat = require('./models/chat')
-const Cart =require ('./models/cart.js')
-const product = require ('./models/product.js')
-const userRoutes=require('./routes/usersRoute.js')
-const chatRouter=require('./routes/chatRoute.js')
-const loginRouterUser=require('./routes/LoginRouteUser.js')
-const signupRouterUser=require('./routes/SignupRouteUser.js')
-const CartRouter=require('./routes/RoutesCart');
-const prodRouter = require('./routes/RoutsProduct.js')
-const PORT = 3000
-const app = express()
-const cors = require('cors')
+const express = require('express');
+const cors=require('cors');
+const db=require('./database-squelize/index');
+const CartRouter=require('./Routes/RoutesCart');
+const loginRoute=require('./Routes/LoginRoute.js')
+const signupRoute=require('./Routes/SignupRoute.js')
+const wish=require('./Routes/WishRoute.js')
+const app = express();
+const ContactRouter=require('./Routes/ContactRoute.js')
+const chat = require('./Models/chat')
+const userRouter = require('./Routes/UserRoute.js')
+const categRouter = require('./Routes/CategoryRoute.js')
+const chatRouter=require('./Routes/ChatRoute.js')
+const prodRouter = require('./Routes/RoutsProducts.js')
+const PORT = 3000;
 app.use(cors())
 app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
-app.use(express.static(__dirname + '/../client/dist'))
 
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({extended: true}));
 
-//user routes
-app.use('/api',loginRouterUser)
-app.use('/api',signupRouterUser)
+app.use('/api/auth', loginRoute);
+app.use('/api/auth', signupRoute);
 app.use('/api/cart',CartRouter)
-app.use('/api/products',prodRouter)
-
-
-app.use('/api',userRoutes)
+app.use('/api',ContactRouter)
+ app.use('/api/products',prodRouter)
+ app.use('/api/users',userRouter)
+ app.use('/api/categories',categRouter)
+app.use('/api/wish',wish)
 app.use('/api',chatRouter)
 
 
+
+
 app.listen(PORT, () => {
-  console.log(`Server listening at http://localhost:${PORT}`)
-})
+    console.log(`listening on port ${PORT}`);
+  });
+  
+
+  

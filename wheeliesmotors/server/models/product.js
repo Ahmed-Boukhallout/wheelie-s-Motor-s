@@ -1,5 +1,6 @@
-const sequelize= require ('../database-sequalize/index');
-const {DataTypes } = require('sequelize');
+const {DataTypes}=require('sequelize')
+const sequelize=require('../database-squelize/index')
+
 const Product = sequelize.define('product', {
     ProductID: {
       type: DataTypes.INTEGER,
@@ -10,12 +11,28 @@ const Product = sequelize.define('product', {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
+    Description: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
     Price: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: true,
     },
+    Quantity: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    Rating: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
     Color: {
       type: DataTypes.STRING(255),
+      allowNull: true,
+    },
+    Size: {
+      type: DataTypes.STRING(45),
       allowNull: true,
     },
     Availability: {
@@ -30,8 +47,6 @@ const Product = sequelize.define('product', {
       type: DataTypes.JSON,
       allowNull: true,
     },
-    
-  },{tableName:'product',
-});
+  },{tableName:'products'});
 
 module.exports= Product;
