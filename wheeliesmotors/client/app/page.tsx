@@ -1,22 +1,16 @@
-import Head from "next/head";
-import Login from "./components/Login/Login";
 
-const Home: React.FC = () => {
+import Home from "./components/Home/page";
 
+ export default function HomePage() {
 
   return (
     <div>
-      <Head>
-        <title>My Next.js App</title>
-        <meta name="description" content="Welcome to my Next.js app!" />
-      </Head>
+     
 
       <main>
-        <Login
-        />
+
+    <Home/>
       </main>
     </div>
   );
 };
-
-export default Home;

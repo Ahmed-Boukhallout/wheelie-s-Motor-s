@@ -1,6 +1,6 @@
-const sequelize= require ('../database-sequalize/index');
+const sequelize= require ('../database-squelize/index');
 const {DataTypes } = require('sequelize');
-const User = require('./users'); 
+const User = require('../Models/user'); 
 
 
 const Chat = sequelize.define('chat', {
@@ -19,7 +19,7 @@ const Chat = sequelize.define('chat', {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  company_idcompany: {
+  UserID: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
@@ -31,8 +31,8 @@ const Chat = sequelize.define('chat', {
       fields: ['client_id'],
     },
     {
-      name: 'fk_chat_company1_idx',
-      fields: ['company_idcompany'],
+      name: 'fk_chat_admin1_idx',
+      fields: ['user_UserID'],
     },
   ],
 });
@@ -45,8 +45,8 @@ Chat.belongsTo(User, {
 });
 
 Chat.belongsTo(User, {
-  foreignKey: 'client_id',
-  as: 'admin',
+  foreignKey: 'user_UserID',
+  as: 'adminChat',
   onDelete: 'NO ACTION',
   onUpdate: 'NO ACTION',
 });

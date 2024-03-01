@@ -9,13 +9,13 @@ const sequelize = new Sequelize('wheeliesmotors', 'root', 'root', {
   
   sequelize.authenticate().then(r=>console.log('connected')).catch(err => console.log(err))
   
-  // sequelize.sync({ force: false })
-  // .then(() => {
-  //   console.log('Chat table created (if not exist)');
-  // })
-  // .catch((err) => {
-  //   console.error('Error creating Total table:', err);
-  // });
+  sequelize.sync({ force: false })
+  .then(() => {
+    console.log('Chat table created (if not exist)');
+  })
+  .catch((err) => {
+    console.error('Error creating Total table:', err);
+  });
   module.exports = sequelize;
 // Define User model
 

@@ -11,7 +11,7 @@ import Footer from '../footer/Footer';
 import FloatingIcon from '../Chat/page';
 import MapContainer from '../footer/Map';
 import Stats from '../Stats/Stats'
-function Home() {
+const Home:React.FC = function() {
   const images: string[] = [
     "https://cdn.dribbble.com/users/7656374/screenshots/17017943/media/7f6db54e4da05cffbea2c730778713b3.jpg?resize=1200x900&vertical=center",
      "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/sports-bike-template-design-83af5248bc8b6a3cb2c9982e03b93641_screen.jpg?ts=1695065539"
