@@ -1,6 +1,8 @@
 const express = require('express');
 const cors=require('cors');
 const app = express();
+
+
 const db=require('./database-squelize/index');
 const CartRouter=require('./Routes/RoutesCart');
 const loginRoute=require('./Routes/LoginRoute.js')
