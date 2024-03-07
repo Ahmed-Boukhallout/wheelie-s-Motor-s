@@ -15,7 +15,7 @@ const {addUser} = require('../controllers/UserController');
         FirstName,
         LastName,
         Email,
-        Role,
+        Role:"user",
         Password: hashedPassword}
        
        addUser({ body: newUser }, res);
