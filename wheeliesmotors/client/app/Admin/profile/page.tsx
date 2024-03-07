@@ -10,12 +10,12 @@ import bcrypt from "bcryptjs"
 import Link from "next/link";
 
 interface New {
-   id:string|null;
-    fullName:string;
-    role:string;
-    phoneNumber:number;
-    email:string;
-    password:string;
+   UserID:string|null;
+    FirstName:string;
+    Role:string;
+    LastName:number;
+    Email:string;
+    Password:string;
     image_user:String;
 }
 
@@ -32,7 +32,7 @@ const fileInputRef = useRef<HTMLInputElement>(null);
 const userId = localStorage.getItem('id')
 const {id} = useParams()
 
-
+var x=""
     
 const addPicture = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -40,10 +40,10 @@ const addPicture = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (file) {
       const formData = new FormData();
       formData.append('file', file);
-      formData.append('upload_preset', 'pa4ezjqw');
+      formData.append('upload_preset', 'l4ng65bl');
 
       axios
-        .post("http://api.cloudinary.com/v1_1/dfsyqvvim/image/upload", formData)
+        .post("http://api.cloudinary.com/v1_1/dcq9dwrsb/image/upload", formData)
         .then((res) => {
           console.log('secure', res.data.secure_url);
           setimage_user(res.data.secure_url);
@@ -77,7 +77,7 @@ const addPicture = (e: React.ChangeEvent<HTMLInputElement>) => {
         image_user: image_user,
       };
 
-      const response = await axios.put(`http://localhost:3000/api/users/${userId}`, updatedUser);
+      const response = await axios.put(`http://localhost:3000/api/users/edit/${userId}`, updatedUser);
       
 
       console.log(response.data, 'res');
@@ -99,12 +99,10 @@ const addPicture = (e: React.ChangeEvent<HTMLInputElement>) => {
 //     });
 // };
     return (
-      <div className="flex h-screen">
+      <div className=" h-screen">
       <Sidebar/>
-   
-         {/* Main Content */}
-         <div className="flex-1 bg-gray-100 p-4 ml-[350px]">
-         {/* Your main content goes here */}
+         <div className="flex-1 bg-gray-100 p-4 ">
+         
          <div>
          
          <div >
@@ -261,7 +259,7 @@ const addPicture = (e: React.ChangeEvent<HTMLInputElement>) => {
           <button
             type="submit"
             className="block w-full rounded-md bg-gray-600 px-3.5 py-2.5 text-center text-sm font-semibold text-black shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-             onClick={()=>{ modifyProfile({id:userId,fullName:fullName,image_user:image_user,phoneNumber:phoneNumber,email:email,password:newPassword,role:role})}}>
+             onClick={()=>{ modifyProfile({UserID:userId,FirstName:fullName,image_user:image_user,LastName:phoneNumber,Email:email,Password:newPassword,Role:role})}}>
             Done
             {/* <Link href={{ pathname: '/admin/sidebar', query: {  fullName:fullName,image_user:image_user } }}></Link> */}
           </button>
