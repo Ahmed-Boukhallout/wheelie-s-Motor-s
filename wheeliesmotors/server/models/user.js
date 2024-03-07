@@ -25,7 +25,11 @@ const User = sequelize.define('user', {
     LastName: {
       type: DataTypes.STRING(255),
       allowNull: true,
-    }, 
+    },
+    image_user:{
+      type:DataTypes.STRING(255),
+      allowNull:true,
+    },
   },{tableName:'user',
   engine: 'InnoDB',});
 

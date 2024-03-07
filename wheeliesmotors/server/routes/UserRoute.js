@@ -3,6 +3,7 @@ const userController = require("../Controllers/UserController.js");
 
 UserRouter.get("/allUsers",userController.getUsers);
 UserRouter.get('/getOneUser/:UserID',userController.getOneUser)
+UserRouter.get('/users/getName/:name', userController.searchByName);
 UserRouter.post("/addUser",userController.addUser);
 UserRouter.delete("/deleteUser/:UserID",userController.deleteUser);
 UserRouter.get('/sellers',userController.getSellers)

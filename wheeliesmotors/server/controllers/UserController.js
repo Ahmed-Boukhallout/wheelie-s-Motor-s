@@ -27,17 +27,56 @@ module.exports={
   },
   getOnlyClients:async(req,res)=>{
     let cl=await User.findAll({
-        where: {Role: "client"}
+        where: {Role: "user"}
     })
     res.json(cl)
   },
-  updateUser:async(req,res)=>{
-    const {FirstName,LastName,adress,Password,Email}=req.body
-    const hashed=await bcrypt.hash(Password,10)
-    if(hashed){
-    let upd=await User.update({FirstName,LastName,Password:hashed,adress,Email,},{where:{UserID:req.params.id}})
-    res.json(upd)}
-    res.json('err')
+
+  updateUser: async (req, res) => {
+      try {
+          const { FirstName, LastName, image_user, Password, Email } = req.body;
+          
+          // Hash the password if it's provided
+          let hashedPassword = Password;
+          if (Password) {
+              hashedPassword = await bcrypt.hash(Password, 10);
+          }
+  
+          // Update user data in the database
+          const [rowsUpdated] = await User.update({
+              FirstName,
+              LastName,
+              image_user,
+              Password: hashedPassword,
+              Email
+          }, {
+              where: {
+                  UserID: req.params.id
+              }
+          });
+  
+          // Check if any rows were updated
+          if (rowsUpdated === 1) {
+              // If successful, send success response
+              res.json({ message: 'User updated successfully' });
+          } else {
+              // If no rows were updated, send not found response
+              res.status(404).json({ error: 'User not found' });
+          }
+      } catch (error) {
+          // Handle any errors that occurred during the update process
+          console.error('Error updating user:', error);
+          res.status(500).json({ error: 'Internal server error' });
+      }
+  },
+  
+ searchByName:async(req, res) =>{
+      const fullName = req.params.FirstName
+      const search= await User.findAll({
+        where: { fullName: fullName},
+      })
+      res.json(search)
+      res.json('err')
   }
 }
   
