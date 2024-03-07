@@ -7,12 +7,11 @@ import Navbar from "../navbar/page"
 
 
 interface Client {
-  id: number;
-  fullName: string;
-  image_user: string;
-  phoneNumber: string;
-  email:string;
-  role:string;
+  UserID: number;
+  FirstName: string;
+  LastName: string;
+  Email:string;
+  Role:string;
 } 
 
 
@@ -25,7 +24,7 @@ const client: React.FC =()=>{
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/users/getall');
+        const response = await axios.get('http://localhost:3000/api/users/allUsers');
         setData(response.data);
       } catch (error) {
         setError('Error fetching data');
@@ -54,7 +53,7 @@ const client: React.FC =()=>{
   };
   const deletee = async (id:number) => {
     try {
-      await fetch(`http://localhost:3000/api/users/${id}`, {
+      await fetch(`http://localhost:3000/api/users/deleteUser/${id}`, {
         method: 'DELETE',
       });
       console.log("user deleted");
@@ -67,11 +66,11 @@ const client: React.FC =()=>{
   };
     return (
       <div>
-        <div className="flex h-screen">
+        <div className="h-screen">
         <Sidebar/>
      
            {/* Main Content */}
-           <div className="flex-1 bg-gray-100 p-4 ml-[350px]">
+           <div className="flex-1 bg-gray-100 p-4 ">
            {/* Your main content goes here */}
            <div>
 <div className="flex justify-between">
@@ -102,17 +101,17 @@ const client: React.FC =()=>{
             <tr>
 
                 <th scope="col" className="px-6 py-3">
-                    Id
+                    ID
                 </th>
                 <th scope="col" className="px-6 py-3 hover:bg-gray-200 cursor-pointer">
-                    FullName 
+                    FirstName 
                 </th>
                 <th scope="col" className="px-6 py-3 hover:bg-gray-200 cursor-pointer">
-                    Email 
+                   LastName
                 </th>
 
                 <th scope="col" className="px-6 py-3 hover:bg-gray-200 cursor-pointer">
-                    Phone Number 
+                    Email
                 </th>
                 <th scope="col" className="px-6 py-3 hover:bg-gray-200 cursor-pointer">
                 Role 
@@ -127,24 +126,23 @@ const client: React.FC =()=>{
         {data && data.map((e,i) => (
             <tr >
                 <th scope="col" className="px-6 py-3">
-                   {e.id}
+                   {e.UserID}
                 </th>
                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
-                {e.fullName}
+                {e.FirstName}
+                </th>
+                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
+                {e.LastName}
                 </th>
                 <td className="px-6 py-4">
-                {e.email}
-                </td>
-
-                <td className="px-6 py-4">
-                {e.phoneNumber}
+                {e.Email}
                 </td>
                 <td className="px-6 py-4">
-                {e.role}
+                {e.Role}
                 </td>
 
                 <td className="flex items-center px-6 py-4"> 
-                 <button onClick={() => { deletee(e.id) }}> <a href="#" className="font-medium text-red-600 dark:text-red-500 hover:underline ms-3">Remove</a></button>  
+                 <button onClick={() => { deletee(e.UserID) }}> <a href="#" className="font-medium text-red-600 dark:text-red-500 hover:underline ms-3">Remove</a></button>  
                 </td>
             </tr>
         ))}
