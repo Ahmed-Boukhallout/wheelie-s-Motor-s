@@ -36,7 +36,7 @@ const Chatroom = () => {
           <div className="chat-header p-2 bg-gray-200 flex items-center">
             <div className="h2 text-lg font-semibold text-gray-700">Customer Service</div>
           </div>
-          <div className="chat-body p-4">
+          <div className="chat-body p-4 h-[235px]">
             <div className="message incoming bg-gray-400 rounded-lg p-2 mb-2">
               <p>Hello, I need Some Help !!</p>
             </div>

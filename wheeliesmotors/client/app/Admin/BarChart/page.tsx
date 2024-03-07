@@ -63,7 +63,7 @@ const BarChart = () => {
   return (
     <div>
     <Sidebar />
-    <div className='flex items-center justify-center h-screen ml-[300px] '>
+    <div className='flex items-center justify-center h-screen  '>
   <canvas className="w-64 h-64" ref={chartRef} width="400" height="200"></canvas>
   </div>
   </div>
