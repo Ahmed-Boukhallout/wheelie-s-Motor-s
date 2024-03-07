@@ -9,11 +9,11 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const SignUp = () => {
 
-  const [fullName, setFullName] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [FirstName, setFirstName] = useState<string>("");
+  const [LastName, setLastName] = useState<string>("");
+  const [Email, setEmail] = useState<string>("");
+  const [Password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
-  const [phoneNumber, setPhoneNumber] = useState<number>(0);
   // const [longitude, setLongtitude] = useState<string>("");
   // const [latitude, setLaltitude] = useState<string>("");
 
@@ -33,32 +33,32 @@ const SignUp = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   
-    if (!fullName || !phoneNumber || !email || !password) {
+    if (!FirstName  ||!LastName  || !Email || !Password) {
       setError("All fields are necessary.");
       return;
     }
   
     try {
       // Check if the user already exists
-      const resUserExists = await fetch("http://localhost:3000/api/login/user", {
+      const resUserExists = await fetch("http://localhost:3000/api/auth/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ Email }),
       });
   
   
-      const res = await fetch("http://localhost:3000/api/signup/user", {
+      const res = await fetch("http://localhost:3000/api/auth/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          fullName,
-          phoneNumber,
-          email,
-          password,
+          FirstName,
+          LastName,
+          Email,
+          Password,
         }),
       });
   
@@ -66,7 +66,7 @@ const SignUp = () => {
   
       if (res.ok) {
         notify()
-        router.push("/UserLogin/Login");
+        router.push("/Login");
       } else {
         console.log("User registration failed:", data.error );
         setError("User registration failed.");
@@ -89,9 +89,15 @@ const SignUp = () => {
           <a className="login">sign up</a>
           <div className="inputBox">
             <input type="text" required={true} 
-            onChange={(e)=>setFullName(e.target.value)} 
+            onChange={(e)=>setFirstName(e.target.value)} 
             />
-            <span className="user">fullName</span>
+            <span className="user">FirstName</span>
+          </div>
+          <div className="inputBox">
+            <input type="text" required={true} 
+            onChange={(e)=>setLastName(e.target.value)} 
+            />
+            <span className="user">LastName</span>
           </div>
           <div className="inputBox">
             <input type="text" required={true} 
@@ -105,13 +111,6 @@ const SignUp = () => {
              />
             <span>Password</span>
           </div>
-          <div className="inputBox">
-            <input type="text" required={true}
-            onChange={(e) => setPhoneNumber(parseInt(e.target.value))}
-            />
-            <span className="user">Number</span>
-          </div>
-
           <button className="enter" >register</button>
           {error && (
             <div className="bg-red-500 text-white w-fit text-sm py-1 px-3 rounded-md mt-2">
@@ -119,7 +118,7 @@ const SignUp = () => {
             </div>
           )}
           <div className='flex text-sm text-white'>
-          <h1  className=' mb-4'>Already have account  ?</h1><Link className=' ' href={'/UserLogin/Login'}><span className='underline  cursor-pointer'>  Log in</span></Link>
+          <h1  className=' mb-4'>Already have account  ?</h1><Link className=' ' href={'/Login'}><span className='underline  cursor-pointer'>  Log in</span></Link>
           </div>
         </div>
         </form>

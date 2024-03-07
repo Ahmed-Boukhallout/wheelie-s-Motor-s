@@ -4,12 +4,15 @@
     "description": "A Minimum Viable Product",
     "main": "index.js",
     "scripts": {
-        "server-dev": "nodemon index.js"
+        "start": "concurrently \"npm run server-main\" \"npm run server-chat\"",
+        "server-main": "nodemon index.js",
+        "server-chat": "nodemon indexChat.js"
     },
     "author": "You!",
     "license": "ISC",
     "dependencies": {
         "bcrypt": "^5.1.1",
+        "concurrently": "^8.2.2",
         "cors": "^2.8.5",
         "express": "^4.18.3",
         "jquery": "^3.1.1",
@@ -17,6 +20,7 @@
         "mysql": "^2.18.1",
         "mysql2": "^3.6.5",
         "sequelize": "^6.37.1",
+        "socket.io": "^4.7.4",
         "sql": "^0.78.0",
         "sqlite3": "^5.1.6"
     },

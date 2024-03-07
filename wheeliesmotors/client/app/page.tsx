@@ -1,5 +1,5 @@
 
-import Home from "./components/Home/page";
+import Login from "./Login/page";
 
  export default function HomePage() {
 
@@ -9,7 +9,8 @@ import Home from "./components/Home/page";
 
       <main>
 
-    <Home/>
+    <Login/>
+    
       </main>
     </div>
   );

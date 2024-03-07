@@ -1,14 +1,8 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('../Models/user');
-// const secretKey = 'my_secret_key_2023$#@!';
-const {addUser} = require('./UserController.js');
+const {addUser} = require('../controllers/UserController');
 
-
-// const generateToken = (UserID, FirstName,LastName) => {
-//     const expiresIn = 60 * 60 * 48;//2days
-//     return jwt.sign({ UserID, FirstName,LastName}, 'secretKey', { expiresIn: expiresIn });
-//   };
 
   
   const Register = async (req, res) => {

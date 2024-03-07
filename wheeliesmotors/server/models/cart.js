@@ -1,5 +1,5 @@
-const {DataTypes}=require('sequelize')
 const sequelize=require('../database-squelize/index')
+const {DataTypes}=require('sequelize')
 const Product = require('../Models/product')
 const User = require('../Models/user')
 const Cart = sequelize.define('cart', {
@@ -28,7 +28,11 @@ const Cart = sequelize.define('cart', {
       type:DataTypes.INTEGER,
       allowNull:true
     },
-  },{tableName:'carts',
+    product_ProductID:{
+      type : DataTypes.INTEGER ,
+      allowNull: true
+    }
+  },{tableName:'cart',
   
   indexes:[
     {
@@ -39,26 +43,14 @@ const Cart = sequelize.define('cart', {
 ]});
 Cart.belongsTo(User, {
     foreignKey: 'user_UserID',
-    as: 'users',
+    as: 'user',
     onDelete: 'NO ACTION',
     onUpdate: 'NO ACTION',
   });
 Cart.belongsTo(Product, {
   foreignKey: 'product_ProductID', 
-  as: 'cartProducts',
+  as: 'products',
   onDelete: 'CASCADE',
   onUpdate: 'NO ACTION',
 });
-
-
-  module.exports= Cart
-
-
-
-
-
-// Category.hasMany(Product);
-// Product.belongsTo(Category);
-
-// User.hasMany(Product);
-// Product.belongsTo(User);
+module.exports= Cart

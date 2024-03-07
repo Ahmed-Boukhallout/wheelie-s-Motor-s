@@ -25,7 +25,4 @@ const Wish = sequelize.define('wish', {
       },
 
   });
-  
-
-console.log('helo');
   module.exports= Wish

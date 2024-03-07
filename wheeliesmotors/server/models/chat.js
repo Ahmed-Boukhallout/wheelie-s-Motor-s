@@ -19,7 +19,7 @@ const Chat = sequelize.define('chat', {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  UserID: {
+  user_UserID: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },

@@ -1,9 +1,5 @@
-const {DataTypes,Sequelize} =require('sequelize')
-const Product=require('../Models/product.js')
-const Cart=require('../Models/cart.js')
-const Wish=require('../Models/wishlist.js')
 const sequelize=require('../database-squelize/index.js')
-
+const {DataTypes} =require('sequelize')
 const User = sequelize.define('user', {
     UserID: {
       type: DataTypes.INTEGER,
@@ -29,26 +25,8 @@ const User = sequelize.define('user', {
     LastName: {
       type: DataTypes.STRING(255),
       allowNull: true,
-    },
-    ConfirmPassword: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    createdAt: {
-        type: DataTypes.DATE,
-        allowNull: true,
-        defaultValue: DataTypes.NOW,
-      },
-      updatedAt: {
-        type: DataTypes.DATE,
-        allowNull: true,
-        defaultValue: DataTypes.NOW,
-      },
-      adress:{
-        type:DataTypes.TEXT,
-        allowNull:true,
-        
-      }
-  },{tableName:'users'});
+    }, 
+  },{tableName:'user',
+  engine: 'InnoDB',});
 
-  module.exports= User
+  module.exports= User;

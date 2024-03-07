@@ -1,5 +1,5 @@
 const wishRouter=require('express').Router()
-const wishController = require("../Controllers/WishController")
+const wishController = require("../Controllers/WishController.js")
 
 
 wishRouter.post('/addwish',wishController.addwish)

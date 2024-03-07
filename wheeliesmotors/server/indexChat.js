@@ -32,7 +32,7 @@ io.on("connection", (socket) => {
       const newChatMessage = await Chat.create({
         content: data.content,
         client_id: data.client_id,
-        company_idcompany: data.company_idcompany,
+        user_UserID: data.user_UserID,
       });
 
       // Emit the newly stored message to the room
