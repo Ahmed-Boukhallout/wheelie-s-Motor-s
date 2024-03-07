@@ -52,11 +52,11 @@ const calendar =()=>{
   };
 
     return (
-        <div className="flex h-screen">
+        <div className=" h-screen">
         <Sidebar/>
      
            {/* Main Content */}
-           <div className="flex-1 bg-gray-100 p-4 ml-[350px]">
+           <div className="flex-1 bg-gray-100 p-4">
          
            <div>
            <Typography variant="h1" fontWeight="bold" style={{ color: '#000080' }}>
