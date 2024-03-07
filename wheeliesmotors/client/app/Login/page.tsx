@@ -45,7 +45,7 @@ const Login = () => {
         push("/Home")
       }
       if(logUser.data.Role ==="admin") {
-        push("/admin/dashboard")
+        push("/Admin/dashboard")
       }
       ErrNotif()
     } catch (e) {     
