@@ -35,3 +35,16 @@ body::-webkit-scrollbar {
     text-wrap: balance;
   }
 }
+/* styles/globals.css */
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(calc(-96px * 11)); /* Adjust the value based on the number of logos */
+  }
+}
+.animate-scroll {
+  animation: scroll 20s linear infinite;
+  
+}
