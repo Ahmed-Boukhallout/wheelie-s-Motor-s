@@ -92,12 +92,14 @@ const Navbar = () => {
                     </button>
                   </li>
                   <li>
-                    <button>
-                      <svg strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
-                        {/* SVG paths */}
-                      </svg>
-                      <span>Cart</span>
-                    </button>
+                  <a href="http://localhost:3000/Cart">
+    <button>
+      <svg strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
+        {/* SVG paths */}
+      </svg>
+      <span>Cart</span>
+    </button>
+  </a>
                   </li>
                   <li>
                     <button>
