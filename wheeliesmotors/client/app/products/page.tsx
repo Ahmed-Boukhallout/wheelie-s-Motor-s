@@ -5,13 +5,14 @@ import { FaRegHeart } from "react-icons/fa";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import axios from "axios"
 import Link from 'next/link'; 
+
 const Product: React.FC = () => {
+  const userId = localStorage.getItem('id');
   const [All, setAll] = useState<any[]>([]);
-  const [showAddToCart, setShowAddToCart] = useState<boolean>(false);
-const [index, setIndex] = useState<number>(-1);
-const userId = localStorage.getItem('userId');
-console.log(userId)
-useEffect(() => {
+  const [showIcons, setShowIcons] = useState<boolean>(false);
+  
+
+  useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch('http://localhost:3000/api/products/allProducts');
@@ -20,85 +21,95 @@ useEffect(() => {
         }
         const data = await response.json();
         setAll(data);
-      
       } catch (error) {
         console.error(error);
       }
     };
     fetchData();
   }, []);
-  const addWished=(wished:any)=>{
+
+  const addWished = (wished: any) => {
     console.log("add to wishlist working fine!")
-  const toWishlist={
-    NameWish:wished.Name,
-    WishPrice:wished.Price,
-    userUserID:userId
+    const toWishlist = {
+      NameWish: wished.Name,
+      WishPrice: wished.Price,
+      userUserID: userId
+    }
+    axios.post("http://localhost:3000/api/wish/addwish", toWishlist)
+      .then((result) => {
+        console.log(result.data)
+      })
+      .catch((err) => {
+        console.log(err.message)
+      })
   }
-  axios.post("http://localhost:3000/api/wish/addwish",toWishlist).then((result)=>{
-    console.log(result.data)
-  }).catch((err)=>{console.log(err.message)})
+console.log("user", userId)
+  const handleMouseEnter = () => {
+    setShowIcons(true);
   }
-  const addCart=(obj:object)=>{
-    axios.post("http://localhost:3000/api/cart/addCart",obj)
-    .then((res)=>{console.log(res)})
-    .catch((err)=>console.log(err))
-  }
-  
- 
 
-console.log(All);
-return (
+  const handleMouseLeave = () => {
+    setShowIcons(false);
+  }
+
+  const addCart = (obj: object) => {
+    axios.post("http://localhost:3000/api/cart/addCart", obj)
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => console.log(err))
+  }
+
+  return (
     <>
-    <Nav/>
-    <div  className='mr-10 ml-10 mb-20 gap-7'>
-      
-          <h1 className='text-gray-300'>
-          Home / <span className='text-black'> AllProducts</span>
-        </h1>
-      <div className='flex  gap-4 flex-wrap shadow-sm'>
-      {All.map((All,i)=>(
-        <div key={i} className=''>
-          <div className='w-80 h-72 bg-gray mt-10 flex-wrap'
-          onMouseEnter={()=>{setShowAddToCart(!showAddToCart)
-            setIndex(i)}}
-          onMouseLeave={()=>{setShowAddToCart(!showAddToCart)
-          setIndex(-1)}}>
-          <div className=' top-full left-0 w-20 rounded h-8 bg-red flex justify-center items-center text-white '>-{All.Discount}%</div>
-          <div className='bg-white w-12 h-12 rounded-full flex items-center justify-center float-right'><FaRegHeart onClick={()=>{addWished(All)}}size={20}/> </div>
-          <div className='bg-white w-12 h-12 rounded-full flex items-center justify-center float-right'><MdOutlineRemoveRedEye size={20}/></div>
-          {index === i && showAddToCart && (
-          <button
-            className="cursor-pointer w-80 h-11 bg-black text-white flex justify-center items-center absolute mt-56"
-            onClick={() =>
-              addCart({
-                NameCart: All.Name,
-                CartImage: All.ProductImage,
-                Price: All.Price,
-                Quantity: All.Quantity,
-                userUserID: userId,
-              })
-            }
-          >
-            Add To Cart
-          </button>
-        )}          <Link href={`/ProductDetails/${All.ProductID}`} ><img className=' w-40' src={All.ProductImage[0]?All.ProductImage[0]:All.ProductImage} alt="" onClick={()=>{
-            }} /></Link>
-            
-          </div>
-          <h1>{All.Name}</h1>
-         <div className='flex gap-4'>
-         <h1 className='text-red'>${All.Price}</h1><h1 className='text-gray-300 line-through	'>{(All.Price / (1 - All.Discount/ 100)).toFixed(2)}</h1>
-         </div>
+      <Nav />
+      <div className='mr-10 ml-10 mb-20 gap-7'>
+        <div className='flex gap-4 flex-wrap shadow-sm'>
+          {All.map((product, i) => (
+            <div key={i} className='relative'>
+              <div
+                className='w-80 h-72 bg-gray mt-10 flex-wrap relative'
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}>
+                {showIcons && (
+                  <div className='absolute top-0 right-0 z-10 flex'>
+                    <div className='bg-transparent w-12 h-12 rounded-full flex items-center justify-center'>
+                      <FaRegHeart onClick={() => addWished(product)} size={20} />
+                    </div>
+                    <div className='bg-transparent w-12 h-12 rounded-full flex items-center justify-center'>
+                      <MdOutlineRemoveRedEye size={20} />
+                    </div>
+                  </div>
+                )}
+                <button
+                  className="cursor-pointer w-80 h-11 bg-black text-white flex justify-center items-center absolute mt-56"
+                  style={{ visibility: showIcons ? 'visible' : 'hidden' }}
+                  onClick={() =>
+                    addCart({
+                      NameCart: product.Name,
+                      CartImage: product.ProductImage,
+                      Price: product.Price,
+                      Quantity: product.Quantity,
+                      userUserID: userId,
+                    })
+                  }>
+                  Add To Cart
+                </button>
+                <Link href={`/ProductDetails/${product.ProductID}`}>
+                  <img className='justify-center w-full cursor-pointer' src={product.ProductImage[0] ? product.ProductImage[0] : product.ProductImage} alt="" />
+                </Link>
+              </div>
+              <h1>{product.Name}</h1>
+              <div className='flex gap-4'>
+                <h1 className='text-red'>${product.Price}</h1>
+                <h1 className='text-gray-300 line-through'>{(product.Price / (1 - product.Discount / 100)).toFixed(2)}</h1>
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
-        
       </div>
-    
-
-    </div>
-
     </>
-  )
+  );
 }
 
 export default Product;
