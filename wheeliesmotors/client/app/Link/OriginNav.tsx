@@ -30,7 +30,7 @@ const Navbar = () => {
        
       
       {/* Original Navbar */}
-      <div className={`fixed w-full z-20 p-2 transition-top duration-300 ease-in-out ${header ? 'bg-white text-black top-0' : 'bg-transparent text-white -top-15px mt-6'}`}>
+      <div className={` w-full z-20 p-2 transition-top duration-300 ease-in-out ${header ? 'bg-white text-black top-0' : 'bg-transparent text-white -top-15px mt-6'}`}>
         <nav className="flex items-center justify-between flex-wrap">
           <img src={"/images/logoo.png"} alt="logo" className="w-24 mt-1 ml-6" style={{ backgroundColor: header ? 'transparent' : 'transparent' }} />
           <div className="block lg:hidden">
@@ -40,10 +40,9 @@ const Navbar = () => {
           </div>
           <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto ml-24">
             <div className="text-sm lg:flex-grow ml-8">
-              <Link href="#home" onClick={() => scrollToSection('home')} className={`block mt-4 lg:inline-block lg:mt-0 ${header ? 'text-gray-600' : 'text-black'} hover:text-gray-600 hover:border-b-2 hover:border-gray-600 mr-4`}>Home</Link>
+              <Link href="/Home" onClick={() => scrollToSection('home')} className={`block mt-4 lg:inline-block lg:mt-0 ${header ? 'text-gray-600' : 'text-black'} hover:text-gray-600 hover:border-b-2 hover:border-gray-600 mr-4`}>Home</Link>
               <Link href="/categories" className={`block mt-4 lg:inline-block lg:mt-0 ${header ? 'text-gray-600' : 'text-black'} hover:text-gray-600 hover:border-b-2 hover:border-gray-600 mr-4`}>Categories</Link>
               <Link href="/products" className={`block mt-4 lg:inline-block lg:mt-0 ${header ? 'text-gray-600' : 'text-black'} hover:text-gray-600 hover:border-b-2 hover:border-gray-600 mr-4`}>Products</Link>
-              <Link href="#about" onClick={() => scrollToSection('about')} className={`block mt-4 lg:inline-block lg:mt-0 ${header ? 'text-gray-600' : 'text-black'} hover:text-gray-600 hover:border-b-2 hover:border-gray-600 mr-4`}>About Us</Link>
               <Link href="/brands" className={`block mt-4 lg:inline-block lg:mt-0 ${header ? 'text-gray-600' : 'text-black'} hover:text-gray-600 hover:border-b-2 hover:border-gray-600 mr-4`}>Brands</Link>
               <Link href="/gallery" className={`block mt-4 lg:inline-block lg:mt-0 ${header ? 'text-gray-600' : 'text-black'} hover:text-gray-600 hover:border-b-2 hover:border-gray-600 mr-4`}>Gallery</Link>
               <Link href="/videos" className={`block mt-4 lg:inline-block lg:mt-0 ${header ? 'text-gray-600' : 'text-black'} hover:text-gray-600 hover:border-b-2 hover:border-gray-600 mr-4`}>Videos</Link>
@@ -73,13 +72,15 @@ const Navbar = () => {
                     </button>
                   </li>
                   <li>
-                    <button>
-                      <svg strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
-                        {/* SVG paths */}
-                      </svg>
-                      <span>Cart</span>
-                    </button>
-                  </li>
+  <a href="http://localhost:3001/Cart">
+    <button>
+      <svg strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
+        {/* SVG paths */}
+      </svg>
+      <span>Cart</span>
+    </button>
+  </a>
+</li>
                   <li>
                     <button>
                       <svg strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
@@ -89,13 +90,15 @@ const Navbar = () => {
                     </button>
                   </li>
                   <li>
-                    <button>
-                      <svg strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
-                        {/* SVG paths */}
-                      </svg>
-                      <span>Log Out</span>
-                    </button>
-                  </li>
+  <a href="your_link_destination">
+    <button>
+      <svg strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
+        {/* SVG paths */}
+      </svg>
+      <span>Log Out</span>
+    </button>
+  </a>
+</li>
                 </ul>
               </nav>
             </label>
