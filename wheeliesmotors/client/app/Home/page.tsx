@@ -11,6 +11,7 @@ import Footer from '../footer/Footer';
 import FloatingIcon from '../Chat/page';
 import MapContainer from '../footer/Map';
 import Stats from '../Stats/Stats'
+import BrandLoop from '../Brands/page';
 const Home:React.FC = function() {
   const images: string[] = [
     "https://cdn.dribbble.com/users/7656374/screenshots/17017943/media/7f6db54e4da05cffbea2c730778713b3.jpg?resize=1200x900&vertical=center",
@@ -84,6 +85,10 @@ const Home:React.FC = function() {
      
    
       <AllProducts/>
+      <div className="container mx-auto mt-4">
+      <h1 className="text-2xl font-bold mb-4 text-center">Brands</h1>
+      <BrandLoop />
+    </div>
       <Stats/>
       <AboutUs/>
       <div className="w-full" >
