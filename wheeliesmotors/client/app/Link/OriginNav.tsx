@@ -30,7 +30,7 @@ const Navbar = () => {
        
       
       {/* Original Navbar */}
-      <div className={` w-full z-20 p-2 transition-top duration-300 ease-in-out ${header ? 'bg-white text-black top-0' : 'bg-transparent text-white -top-15px mt-6'}`}>
+      <div className=" w-full z-20 p-2 transition-top duration-300 ease-in-out ${header ? 'bg-white text-black ">
         <nav className="flex items-center justify-between flex-wrap">
           <img src={"/images/logoo.png"} alt="logo" className="w-24 mt-1 ml-6" style={{ backgroundColor: header ? 'transparent' : 'transparent' }} />
           <div className="block lg:hidden">
@@ -82,12 +82,14 @@ const Navbar = () => {
   </a>
 </li>
                   <li>
+                  <a href="http://localhost:3001/Wishlist">
                     <button>
                       <svg strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
                         {/* SVG paths */}
                       </svg>
                       <span>WishList</span>
                     </button>
+                    </a>
                   </li>
                   <li>
   <a href="your_link_destination">

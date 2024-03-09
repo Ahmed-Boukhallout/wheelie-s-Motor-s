@@ -20,7 +20,7 @@
 
     const BrandLoop: React.FC = () => {
         return (
-        <div className="flex overflow-hidden">
+        <div className="flex overflow-hidden mt-12">
             <div className="flex animate-scroll">
             {brands.map((brand, index) => (
                 <div key={index} className="w-24 h-24 flex-shrink-0 mr-10">

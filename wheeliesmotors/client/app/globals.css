@@ -37,11 +37,11 @@ body::-webkit-scrollbar {
 }
 /* styles/globals.css */
 @keyframes scroll {
-  0% {
-    transform: translateX(0%);
+  from {
+    transform: translateX(100%);
   }
-  100% {
-    transform: translateX(calc(-96px * 11)); /* Adjust the value based on the number of logos */
+  to{
+    transform: translateX(-100%); /* Adjust the value based on the number of logos */
   }
 }
 .animate-scroll {
