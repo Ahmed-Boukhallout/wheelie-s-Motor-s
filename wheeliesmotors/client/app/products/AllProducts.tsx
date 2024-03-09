@@ -41,15 +41,13 @@ const ProductSlider: React.FC = () => {
 
   return (
     <div className="relative">
-      <button onClick={showPrevProducts} className="hover:bg-white text-gray-800 font-bold rounded-3xl absolute left-0 top-1/2 transform -translate-y-1/2 z-10">
-        <TbSquareRoundedArrowLeft size={30} />
-      </button>
-      <div className="flex relative bg-white  content-between" style={{ scrollSnapType: 'x mandatory', display: 'flex', overflowX: 'scroll', width: '100%', height: '22rem' }} ref={containerRef}>
+   
+      <div className="flex relative bg-white  content-between" style={{ scrollSnapType: 'x mandatory', display: 'flex', overflowX: 'hidden', width: '100%', height: '13rem' }} ref={containerRef}>
         {products.map((product: ProductCard, index: number) => (
           <div
             key={product.ProductID}
             className="bg-white p-2 rounded-lg shadow-md flex flex-col items-center justify-center"
-            style={{ width: '12rem', height: '18rem' }}
+            style={{ width: '19rem', height: '13rem' }}
           >
             <img
               src={product.ProductImage[0]}
@@ -62,9 +60,7 @@ const ProductSlider: React.FC = () => {
           </div>
         ))}
       </div>
-      <button onClick={showNextProducts} className="hover:bg-white text-gray-800 font-bold rounded-3xl absolute right-0 top-1/2 transform -translate-y-1/2 z-10">
-        <TbSquareRoundedArrowRight size={30} />
-      </button>
+     
     </div>
   );
 };

@@ -1,0 +1,55 @@
+.footer-section {
+    background-color: #15a0b5;
+    color: #fff;
+    padding: 30px 0;
+  }
+  
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .col-md-3 {
+    width: 23%;
+  }
+  
+  h5 {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+  
+  
+  
+  ul li {
+    margin-bottom: 10px;
+  }
+  
+  .social-icons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  
+
+  
+  .icon:hover {
+    background-color: red;
+    opacity: 0.7;
+  }
+  
+  .row {
+    justify-content: center;
+    align-items: center;
+  
+  }
+  
+  .ft {
+    text-align: center;
+  }
+  
+  .pic {
+    text-align: center;
+    display: flex;
+  }

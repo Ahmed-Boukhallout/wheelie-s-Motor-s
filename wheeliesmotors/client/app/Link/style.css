@@ -43,7 +43,7 @@
       transform: translateY(calc(-50% - 5px)) scale(1.1);
     }
   }
-  /* The design is inspired from the mockapi.io */
+
 
 .popup {
     --burger-line-width: 1.125em;

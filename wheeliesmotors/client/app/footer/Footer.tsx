@@ -1,28 +1,66 @@
-import React from 'react';
+import React, { FC } from "react";
+import Image from "next/image";
+import "./footer.css";
 
-const Footer = () => {
+const Footer: FC = () => {
   return (
-    <footer className="bg-gray-900 text-white py-12">
-      <div className="container mx-auto">
-        <div className="flex flex-wrap justify-between">
-          <div className="w-full lg:w-1/3 mb-8 lg:mb-0">
-            <h3 className="text-xl font-bold mb-4">Contact Us</h3>
-            <p className="mb-2">123 Street Name</p>
-            <p className="mb-2">City, Country</p>
-            <p className="mb-2">Email: example@example.com</p>
-            <p>Phone: +1234567890</p>
+    <footer className="footer-section ">
+      <div className="container">
+        <div className="row">
+          <div className="col-md-3">
+            <div>
+              <Image
+                src={"/images/logoo.png"}
+                alt="Logo"
+                width={200}
+                height={200}
+              />
+            </div>
+            <ul>
+              <li>Customer support</li>
+              <li>+216 70000007</li>
+              <li>+216 94413504</li>
+              <li>Wheelies@Motors.com</li>
+            </ul>
           </div>
-          <div className="w-full lg:w-1/3 mb-8 lg:mb-0">
-            <h3 className="text-xl font-bold mb-4">Opening Hours</h3>
-            <p className="mb-2">Monday - Friday: 9am - 6pm</p>
-            <p className="mb-2">Saturday: 10am - 4pm</p>
-            <p>Sunday: Closed</p>
+          <div className="col-md-3 h-72">
+            <ul>
+              <li><h5>Latest Cars</h5></li>
+              <li>Yamaha</li>
+              <li>BMW </li>
+              <li>Honda</li>
+              <li>Triumph</li>
+              <li>Kawasaki</li>
+              <li>Ducati</li>
+            </ul>
           </div>
-           
+          <div className="col-md-3 h-72">
+            <h5>Wheelies Motors</h5>
+            <ul>
+              <li>About</li>
+              <li> Blog</li>
+              <li> Shop</li>
+              <li>Wishlist</li>
+              <li>FAQ</li>
+            </ul>
+          </div>
+          <div className="col-md-3 h-72">
+            <h5>Useful Information</h5>
+            <p>My account</p>
+            <p>Dashboard</p>
+            <p>Contact</p>
+            <Image alt="" src={"/images/frame.png"} width={200} height={200} className="mt-10"/>
+          </div>
         </div>
-        <hr className="border-gray-600 my-8" />
-        <div className="text-center">
-          <p>&copy; {new Date().getFullYear()} Your Company. All rights reserved.</p>
+        <div className="row">
+          <div className="ft">
+            <h5>@Copyright by Wheelies-Motors. All Rights Reserved.</h5>
+            <div className="pic">
+<Image alt="" src="https://autobid.modeltheme.com/wp-content/uploads/2023/11/autobid-google.svg" width={200} height={200}/>
+<Image alt="" src="https://autobid.modeltheme.com/wp-content/uploads/2023/11/autobid-appstore.svg"width={200}height={200}/>
+
+</div>
+        </div>
         </div>
       </div>
     </footer>

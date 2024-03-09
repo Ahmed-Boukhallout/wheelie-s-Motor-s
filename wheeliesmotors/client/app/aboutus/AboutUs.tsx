@@ -14,7 +14,7 @@ const AboutUs = () => {
           }
         });
       },
-      { threshold: 0.5 } // Only consider visible when 50% of the element is in the viewport
+      { threshold: 0.7 } // Only consider visible when 50% of the element is in the viewport
     );
 
     if (aboutRef.current) {

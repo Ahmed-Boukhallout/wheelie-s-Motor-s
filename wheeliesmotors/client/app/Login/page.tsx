@@ -15,16 +15,7 @@ const Login = () => {
   const [Password, setPassword] = useState('');
   const [error, setError] = useState<string>('');
 
-  const ErrNotif = () => toast.error('please check your information!', {
-    position: "top-center",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "colored",
-  });
+
  
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -32,7 +23,6 @@ const Login = () => {
     event.preventDefault();
     if(!Email||!Password){
       setError('Invalid email or password')
-      ErrNotif()
       return;
     }
     
@@ -47,7 +37,6 @@ const Login = () => {
       if(logUser.data.Role ==="admin") {
         push("/Admin/dashboard")
       }
-      ErrNotif()
     } catch (e) {     
       
       const error = e as AxiosError;    

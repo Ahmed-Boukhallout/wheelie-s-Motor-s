@@ -37,14 +37,15 @@ body::-webkit-scrollbar {
 }
 /* styles/globals.css */
 @keyframes scroll {
-  from {
-    transform: translateX(100%);
+  0%{
+    transform: translateX(0%);
   }
-  to{
-    transform: translateX(-100%); /* Adjust the value based on the number of logos */
+  100%{
+    transform: translateX(calc(-100% * 1)); /* Adjust the value based on the number of logos */
   }
 }
 .animate-scroll {
-  animation: scroll 20s linear infinite;
-  
+  animation: scroll 50s linear infinite;
+  width: fit-content; /* Adjust as needed */
+  white-space: nowrap;
 }

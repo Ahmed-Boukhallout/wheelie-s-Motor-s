@@ -32,7 +32,7 @@ const Home:React.FC = function() {
   return (
     <div className='bg-white'>
           <Navbar />
-       <div className="slide-container bg-white">
+       <div className="slide-container bg-white mb-20">
         <Slide {...properties}>
           {images.map((image, index) => (
             <div key={index} className="each-slide-effect">
@@ -41,8 +41,8 @@ const Home:React.FC = function() {
           ))}
         </Slide>
       </div>
-      <div className='bg-white  ' style={{height:"351px"}}>
-      <h1 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+      <div className='bg-white  ' style={{height:"300px"}}>
+      <h1 className="text-3xl font-bold text-gray-900 mb- text-center">
         Bike
       </h1>
       <AllProducts/>
@@ -50,7 +50,7 @@ const Home:React.FC = function() {
       </div>
      
    
-      <div className="container mx-auto mt-4 width-[1163]">
+      <div className="container mx-auto mt-4 w-full">
       <h1 className="text-2xl font-bold mb-4 text-center">Brands</h1>
       <BrandLoop />
     </div>
