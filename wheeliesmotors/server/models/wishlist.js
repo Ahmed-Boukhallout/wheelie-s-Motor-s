@@ -12,7 +12,7 @@ const Wish = sequelize.define('wish', {
       allowNull: false,
     },
     WishImage: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.JSON,
       allowNull: true,
     },
     WishPrice:{

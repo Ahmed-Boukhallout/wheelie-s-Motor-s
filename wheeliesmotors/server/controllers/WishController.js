@@ -2,9 +2,9 @@ const Wish = require('../Models/wishlist')
 module.exports={
     addwish:async(req,res)=>{
         
-        let {NameWish,WishPrice,userUserID}=req.body
+        let {NameWish,WishPrice,userUserID,WishImage,WishID}=req.body
         try{
-            let d=await Wish.create({NameWish,WishPrice,userUserID})    
+            let d=await Wish.create({NameWish,WishPrice,userUserID,WishImage,WishID})    
         res.json(d)
         }
         catch(err){

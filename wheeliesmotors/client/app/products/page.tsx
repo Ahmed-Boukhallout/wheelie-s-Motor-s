@@ -28,14 +28,10 @@ const Product: React.FC = () => {
     fetchData();
   }, []);
 
-  const addWished = (wished: any) => {
+  const addWished = (wished: object) => {
     console.log("add to wishlist working fine!")
-    const toWishlist = {
-      NameWish: wished.Name,
-      WishPrice: wished.Price,
-      userUserID: userId
-    }
-    axios.post("http://localhost:3000/api/wish/addwish", toWishlist)
+    
+    axios.post("http://localhost:3000/api/wish/addwish", wished)
       .then((result) => {
         console.log(result.data)
       })
@@ -63,8 +59,8 @@ console.log("user", userId)
   return (
     <>
       <Nav />
-      <div className='mr-10 ml-10 mb-20 gap-7'>
-        <div className='flex gap-4 flex-wrap shadow-sm'>
+      <div className=' mb-20 gap-7 ' >
+        <div className='flex gap-4 flex-wrap shadow-sm justify-around'>
           {All.map((product, i) => (
             <div key={i} className='relative'>
               <div
@@ -74,7 +70,12 @@ console.log("user", userId)
                 {showIcons && (
                   <div className='absolute top-0 right-0 z-10 flex'>
                     <div className='bg-transparent w-12 h-12 rounded-full flex items-center justify-center'>
-                      <FaRegHeart onClick={() => addWished(product)} size={20} />
+                      <FaRegHeart onClick={() => addWished({
+                           NameWish: product.Name,
+                           WishPrice: product.Price,
+                           WishImage: product.ProductImage,
+                           userUserID: userId
+                      })} size={20} />
                     </div>
                     <div className='bg-transparent w-12 h-12 rounded-full flex items-center justify-center'>
                       <MdOutlineRemoveRedEye size={20} />
@@ -102,7 +103,6 @@ console.log("user", userId)
               <h1>{product.Name}</h1>
               <div className='flex gap-4'>
                 <h1 className='text-red'>${product.Price}</h1>
-                <h1 className='text-gray-300 line-through'>{(product.Price / (1 - product.Discount / 100)).toFixed(2)}</h1>
               </div>
             </div>
           ))}
